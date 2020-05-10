@@ -1,16 +1,11 @@
 # quizapp
 
-A new Flutter application.
+You are to make a simple quiz app using all the widgets you have been taught. The app should have: 
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+A button to move to the next question
+A score counter indicating how many points accumulated
+The app should have a count of all the questions
+The app should show the total points at the end of the quiz
+Each Question should have 4 options
+If the correct answer is clicked, it's container should be coloured green
+If a wrong answer is clicked, the container should be coloured red and the right one should be coloured green
