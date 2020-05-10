@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
     return SplashScreen(
         loaderColor: Colors.blue,
         backgroundColor: Colors.white,
-        seconds: 10,
+        seconds: 5,
         title : Text('The Philosophy Quiz',
         style: TextStyle(color: Colors.blue,
           fontSize: 30.0,

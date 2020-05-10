@@ -16,15 +16,17 @@ class _MainScreenState extends State<MainScreen> {
   int i = 0;
   Color buttonAColor =  Colors.blue;
   Color buttonBColor = Colors.blue;
+  Color buttonCColor =  Colors.blue;
+  Color buttonDColor = Colors.blue;
 
   @override
   Widget build(BuildContext context) {
     List<QObject> list  = new List();
-    var q1 = QObject("Who proposed the initial ontological argument?","Aristotle", "Anslem","Anslem");
-    var q2 = QObject("Which of these philosopher is a pre socratic philosopher?", "Plato","Thales","Thales");
-    var q3 = QObject("Which of these philosopher is a Stoic?", "Epicetus","Socrates","Epicetus");
-    var q4 =  QObject('Who said "I think therfore I am" ?' , "Rene Descartes","St.Augustine","Rene Descartes");
-    var q5 =  QObject("Who  is the father of Skepticism?", "Plato","Pyrrhon","Pyrrhon");
+    var q1 = QObject("Who proposed the initial ontological argument?","Aristotle", "Anslem","Descartes","Kwaz","Anslem");
+    var q2 = QObject("Which of these philosopher is a pre socratic philosopher?", "Plato","Descartes","Kwaz","Thales","Thales");
+    var q3 = QObject("Which of these philosopher is a Stoic?", "Epicetus","Socrates","Descartes","Nkwachi","Epicetus");
+    var q4 =  QObject('Who said "I think therfore I am" ?' , "Rene Descartes","John Locke","Anslem","St.Augustine","Rene Descartes");
+    var q5 =  QObject("Who  is the father of Skepticism?", "Plato","Pyrrhon","Thales","Aristotle","Pyrrhon");
 
     list.add(q1);
     list.add(q2);
@@ -66,7 +68,7 @@ class _MainScreenState extends State<MainScreen> {
         ),
           SizedBox(height: 30.0),
           Padding(
-              padding: EdgeInsets.all(15.0),
+              padding: EdgeInsets.only(left:20.0,right:20.0,bottom:5.0),
               child: SizedBox(
                   width: double.infinity,
                   child: RaisedButton(
@@ -79,7 +81,7 @@ class _MainScreenState extends State<MainScreen> {
               )
           ),
           Padding(
-              padding: EdgeInsets.all(15.0),
+              padding: EdgeInsets.only(left:20.0,right:20.0,bottom:5.0),
               child: SizedBox(
                   width: double.infinity,
                   child: RaisedButton(textColor: Colors.white,
@@ -87,6 +89,30 @@ class _MainScreenState extends State<MainScreen> {
                       color: buttonBColor,
                       onPressed: () {
                         _clickLogic(list[count].optionB,2,list[count]);
+                      })
+              )
+          ),
+          Padding(
+              padding: EdgeInsets.only(left:20.0,right:20.0,bottom:5.0),
+              child: SizedBox(
+                  width: double.infinity,
+                  child: RaisedButton(textColor: Colors.white,
+                      child: Text(list[count].optionC),
+                      color: buttonCColor,
+                      onPressed: () {
+                        _clickLogic(list[count].optionC,3,list[count]);
+                      })
+              )
+          ),
+          Padding(
+              padding: EdgeInsets.only(left:20.0,right:20.0,bottom:5.0),
+              child: SizedBox(
+                  width: double.infinity,
+                  child: RaisedButton(textColor: Colors.white,
+                      child: Text(list[count].optionD),
+                      color: buttonDColor,
+                      onPressed: () {
+                        _clickLogic(list[count].optionD,4,list[count]);
                       })
               )
           ),
@@ -101,9 +127,12 @@ class _MainScreenState extends State<MainScreen> {
         setState(()  {
           if(num == 1){
             buttonAColor = Colors.green;
-          }
-          if(num ==  2){
+          }else if(num ==  2){
             buttonBColor = Colors.green;
+          }else if(num == 3){
+            buttonCColor = Colors.green;
+          }else if(num ==  4){
+            buttonDColor = Colors.green;
           }
           score++;
         });
@@ -111,9 +140,12 @@ class _MainScreenState extends State<MainScreen> {
         setState(() {
           if(num == 1){
             buttonAColor = Colors.red;
-          }
-          if(num ==  2){
+          }else if(num ==  2){
             buttonBColor = Colors.red;
+          }else if(num == 3){
+            buttonCColor = Colors.red;
+          }else if(num ==  4){
+            buttonDColor = Colors.red;
           }
         });
       }
@@ -121,6 +153,8 @@ class _MainScreenState extends State<MainScreen> {
         setState(() {
           buttonBColor = Colors.blue;
           buttonAColor = Colors.blue;
+          buttonCColor = Colors.blue;
+          buttonDColor = Colors.blue;
           if(count < 4){
             count++;
           }
@@ -129,12 +163,14 @@ class _MainScreenState extends State<MainScreen> {
       i++;
     }
     if(i == 5){
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => LastScreen(score: score),
-      ),
-      );
-    }
+      Future.delayed(const Duration(milliseconds: 500),(){
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => LastScreen(score: score),
+        ),
+        );
+      });
 
+    }
 
 
   }
