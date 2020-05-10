@@ -76,7 +76,7 @@ class _MainScreenState extends State<MainScreen> {
                       child: Text(list[count].optionA),
                       color: buttonAColor,
                       onPressed: () {
-                        _clickLogic(list[count].optionA,1,list[count]);
+                        _clickLogic(list[count].optionA,list[count]);
                       })
               )
           ),
@@ -88,7 +88,7 @@ class _MainScreenState extends State<MainScreen> {
                       child: Text(list[count].optionB),
                       color: buttonBColor,
                       onPressed: () {
-                        _clickLogic(list[count].optionB,2,list[count]);
+                        _clickLogic(list[count].optionB,list[count]);
                       })
               )
           ),
@@ -100,7 +100,7 @@ class _MainScreenState extends State<MainScreen> {
                       child: Text(list[count].optionC),
                       color: buttonCColor,
                       onPressed: () {
-                        _clickLogic(list[count].optionC,3,list[count]);
+                        _clickLogic(list[count].optionC,list[count]);
                       })
               )
           ),
@@ -112,7 +112,7 @@ class _MainScreenState extends State<MainScreen> {
                       child: Text(list[count].optionD),
                       color: buttonDColor,
                       onPressed: () {
-                        _clickLogic(list[count].optionD,4,list[count]);
+                        _clickLogic(list[count].optionD,list[count]);
                       })
               )
           ),
@@ -121,31 +121,41 @@ class _MainScreenState extends State<MainScreen> {
       ),
     );
   }
-  void _clickLogic(String value,int num,QObject qObject) async{
+  void _clickLogic(String value,QObject qObject) {
     if( i < 5 ){
       if(value == qObject.answer ){
         setState(()  {
-          if(num == 1){
+          if(value == qObject.optionA){
             buttonAColor = Colors.green;
-          }else if(num ==  2){
+          }else if(value ==  qObject.optionB){
             buttonBColor = Colors.green;
-          }else if(num == 3){
+          }else if(value == qObject.optionC){
             buttonCColor = Colors.green;
-          }else if(num ==  4){
+          }else if(value ==  qObject.optionD){
             buttonDColor = Colors.green;
           }
           score++;
         });
       }else{
         setState(() {
-          if(num == 1){
+          if(value == qObject.optionA){
             buttonAColor = Colors.red;
-          }else if(num ==  2){
+          }else if(value ==  qObject.optionB){
             buttonBColor = Colors.red;
-          }else if(num == 3){
+          }else if(value == qObject.optionC){
             buttonCColor = Colors.red;
-          }else if(num ==  4){
+          }else if(value ==  qObject.optionD){
             buttonDColor = Colors.red;
+          }
+
+          if(qObject.answer == qObject.optionA){
+            buttonAColor = Colors.green;
+          }else if(qObject.answer == qObject.optionB){
+            buttonBColor = Colors.green;
+          }else if(qObject.answer == qObject.optionC){
+            buttonCColor = Colors.green;
+          }else if(qObject.answer == qObject.optionD){
+            buttonDColor = Colors.green;
           }
         });
       }
